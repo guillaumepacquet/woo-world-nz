@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <v-alert dense text type="warning">
+        <v-alert dense text type="warning" border="left">
           This is the leaderboard for teams register in Woo world that are
           <strong>based in New Zealand</strong>
         </v-alert>

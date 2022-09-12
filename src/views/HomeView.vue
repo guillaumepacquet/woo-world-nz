@@ -34,6 +34,11 @@
             <v-tab-item v-for="item in items" :key="item">
               <v-card flat>
                 <v-card-text>
+                  <v-skeleton-loader
+                    v-if="loading"
+                    max-width="300"
+                    type="list-item-avatar@4"
+                  ></v-skeleton-loader>
                   <v-list dense>
                     <v-list-item
                       v-for="(team, index) in teams"
@@ -67,15 +72,20 @@ export default {
       totalHeight: [],
       totalDistance: [],
       maxHeight: [],
+      loading: false,
     };
   },
-  mounted() {
+  async mounted() {
     this.$http.get("/woo/update/max-height");
     this.$http.get("/woo/update/total-height");
     this.$http.get("/woo/update/total-distance");
-    this.loadMaxHeiht();
-    this.loadTotalHeiht();
-    this.loadTotalDistance();
+    this.loading = true;
+    await Promise.all([
+      this.loadMaxHeiht(),
+      this.loadTotalHeiht(),
+      this.loadTotalDistance(),
+    ]);
+    this.loading = false;
   },
   computed: {
     teams() {
@@ -86,20 +96,18 @@ export default {
     },
   },
   methods: {
-    loadMaxHeiht() {
-      this.$http.get("/woo/max-height").then((response) => {
-        this.maxHeight = response.data;
-      });
+    async loadMaxHeiht() {
+      const response = await this.$http.get("/woo/max-height");
+
+      this.maxHeight = response.data;
     },
-    loadTotalHeiht() {
-      this.$http.get("/woo/total-height").then((response) => {
-        this.totalHeight = response.data;
-      });
+    async loadTotalHeiht() {
+      const response = await this.$http.get("/woo/total-height");
+      this.totalHeight = response.data;
     },
-    loadTotalDistance() {
-      this.$http.get("/woo/total-distance").then((response) => {
-        this.totalDistance = response.data;
-      });
+    async loadTotalDistance() {
+      const response = await this.$http.get("/woo/total-distance");
+      this.totalDistance = response.data;
     },
   },
 };

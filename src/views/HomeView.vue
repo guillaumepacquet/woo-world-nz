@@ -4,7 +4,31 @@
       <v-col cols="12">
         <v-alert dense text type="warning" border="left">
           This is the leaderboard for teams register in Woo world that are
-          <strong>based in New Zealand</strong>
+          <strong>based in New Zealand</strong><br />
+          You can find the world wide leaderboard on the woo website.
+          <v-btn
+            icon
+            small
+            plain
+            color="blue"
+            href="https://leaderboards.wooworlds.com/ww22/teamtotheight"
+            target="_blank"
+          >
+            <v-icon>mdi-open-in-new</v-icon>
+          </v-btn>
+          <br />
+          To appear in the list below you <strong>must</strong> register your
+          team in woo world
+          <v-btn
+            icon
+            small
+            plain
+            color="blue"
+            href="https://teams.wooworlds.com/"
+            target="_blank"
+          >
+            <v-icon>mdi-open-in-new</v-icon>
+          </v-btn>
         </v-alert>
       </v-col>
     </v-row>

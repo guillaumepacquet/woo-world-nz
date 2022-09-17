@@ -72,6 +72,9 @@
                       <v-list-item-content>
                         <v-list-item-title>
                           {{ team.name | teamName }}
+                          <span class="float-right"
+                            >{{ team.total | float }} M</span
+                          >
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -113,10 +116,21 @@ export default {
   },
   computed: {
     teams() {
-      if (this.tab === this.items[2]) return this.totalDistance;
-      if (this.tab === this.items[0]) return this.maxHeight;
+      if (this.tab === 2) {
+        return this.totalDistance.map((team) => {
+          return { ...team, total: team.teamtotdistance };
+        });
+      }
 
-      return this.totalHeight;
+      if (this.tab === 0) {
+        return this.maxHeight.map((team) => {
+          return { ...team, total: team.teammaxheight };
+        });
+      }
+
+      return this.totalHeight.map((team) => {
+        return { ...team, total: team.teamtotheight };
+      });
     },
   },
   methods: {

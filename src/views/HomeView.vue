@@ -5,7 +5,7 @@
         <v-alert dense text type="warning" border="left">
           This is the leaderboard for teams register in Woo world that are
           <strong>based in New Zealand</strong><br />
-          You can find the world wide leaderboard on the woo website.
+          You can find the world wide leaderboard on the Woo website.
           <v-btn
             icon
             small
@@ -17,18 +17,7 @@
             <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
           <br />
-          To appear in the list below you <strong>must</strong> register your
-          team in woo world
-          <v-btn
-            icon
-            small
-            plain
-            color="blue"
-            href="https://teams.wooworlds.com/"
-            target="_blank"
-          >
-            <v-icon>mdi-open-in-new</v-icon>
-          </v-btn>
+          Team registration for Woo world are <strong>closed</strong>.
         </v-alert>
       </v-col>
     </v-row>
@@ -67,6 +56,8 @@
                     <v-list-item
                       v-for="(team, index) in teams"
                       :key="team.name"
+                      :href="getTeamLink(team.name)"
+                      target="_blank"
                     >
                       <v-list-item-avatar> {{ index + 1 }} </v-list-item-avatar>
                       <v-list-item-content>
@@ -134,6 +125,19 @@ export default {
     },
   },
   methods: {
+    getTeamLink(teamName) {
+      let url = "https://leaderboards.wooworlds.com/ww22/teamtotheight?team=";
+
+      if (this.tab === 2) {
+        url = "https://leaderboards.wooworlds.com/ww22/teamtotdistance?team=";
+      }
+
+      if (this.tab === 0) {
+        url = "https://leaderboards.wooworlds.com/ww22/teammaxheight?team=";
+      }
+
+      return url + teamName;
+    },
     async loadMaxHeiht() {
       const response = await this.$http.get("/woo/max-height");
 

@@ -19,6 +19,11 @@ Vue.filter("teamName", function (value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 });
 
+Vue.filter("float", function (value) {
+  if (!value) return 0;
+  return value.toFixed(2);
+});
+
 new Vue({
   router,
   vuetify,

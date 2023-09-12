@@ -97,14 +97,17 @@ export default {
   },
   methods: {
     getTeamLink(teamName) {
-      let url = "https://leaderboards.wooworlds.com/ww22/teamtotheight?team=";
+      let url =
+        "https://leaderboards.wooworlds.com/ww23/teamtotheight?team=tc_ww23_";
 
       if (this.tab === 2) {
-        url = "https://leaderboards.wooworlds.com/ww22/teamtotdistance?team=";
+        url =
+          "https://leaderboards.wooworlds.com/ww23/teamtotdistance?team=tc_ww23_";
       }
 
       if (this.tab === 0) {
-        url = "https://leaderboards.wooworlds.com/ww22/teammaxheight?team=";
+        url =
+          "https://leaderboards.wooworlds.com/ww23/teammaxheight?team=tc_ww23_";
       }
 
       return url + teamName;

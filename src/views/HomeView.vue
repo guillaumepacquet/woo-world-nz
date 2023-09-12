@@ -23,6 +23,7 @@
     </v-row>
 
     <leader-board />
+    <v-row> <v-col cols="12">Sponsored by:</v-col></v-row>
     <sponsor-tab />
   </div>
 </template>

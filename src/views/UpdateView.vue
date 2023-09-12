@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { localClient } from "@/core/SupabaseClient.js";
+import { Client } from "@/core/SupabaseClient.js";
 
 export default {
   data() {
@@ -16,12 +16,9 @@ export default {
     };
   },
   async mounted() {
-    console.log("onMount");
-    const { data, error } = await localClient.functions.invoke("update-team", {
+    const { data, error } = await Client.functions.invoke("update-team", {
       body: { name: "Functions" },
     });
-    console.log(data);
-    console.log(error);
     this.result = data;
     this.error = error;
   },

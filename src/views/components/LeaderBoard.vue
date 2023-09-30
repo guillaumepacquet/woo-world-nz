@@ -58,6 +58,7 @@
 
 <script>
 import repository from "@/core/SupabaseSQL";
+import { Client } from "@/core/SupabaseClient.js";
 
 export default {
   name: "LeaderBoard",
@@ -70,6 +71,7 @@ export default {
     };
   },
   async mounted() {
+    this.updateTeam();
     this.loading = true;
     this.data = await repository.selectAll();
     this.loading = false;
@@ -96,6 +98,13 @@ export default {
     },
   },
   methods: {
+    async updateTeam() {
+      await Client.functions.invoke("update-team", {
+        body: { name: "Functions" },
+      });
+
+      this.data = await repository.selectAll();
+    },
     getTeamLink(teamName) {
       let url =
         "https://leaderboards.wooworlds.com/ww23/teamtotheight?team=tc_ww23_";

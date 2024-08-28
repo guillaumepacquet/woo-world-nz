@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 
 console.log('updating team function started')
 
-const TEAM_PREFIX= 'tc_ww23_';
+const TEAM_PREFIX= 'tc_ww24_';
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -53,7 +53,7 @@ const filterNzTeams = (teams: any[], teamNames: any[]) => {
 }
 const updateMaxHeight = async (teams: any[]) => {
     console.log('retrieving max height')
-    const teamData = await getWooData('tc_ww23_teammaxheight');
+    const teamData = await getWooData('tc_ww24_teammaxheight');
 
     const nzTeams =filterNzTeams(teamData, getTeamNames(teams));
 
@@ -66,7 +66,7 @@ const updateMaxHeight = async (teams: any[]) => {
 
 const updateTotalHeight = async (teams: any[]) => {
     console.log('retrieving total height')
-    const teamData = await getWooData('tc_ww23_teamtotheight');
+    const teamData = await getWooData('tc_ww24_teamtotheight');
 
     const nzTeams =filterNzTeams(teamData, getTeamNames(teams));
 
@@ -79,7 +79,7 @@ const updateTotalHeight = async (teams: any[]) => {
 
 const updateTotalDistance = async (teams: any[]) => {
     console.log('retrieving total distance')
-    const teamData = await getWooData('tc_ww23_teamtotdistance');
+    const teamData = await getWooData('tc_ww24_teamtotdistance');
 
     const nzTeams =filterNzTeams(teamData, getTeamNames(teams));
 

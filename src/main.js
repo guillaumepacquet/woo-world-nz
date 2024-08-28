@@ -9,7 +9,6 @@ Vue.config.productionTip = false;
 
 Vue.use(VueAxios, axios);
 
-console.log(`process.env.VUE_APP_API_URL`);
 Vue.axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 Vue.filter("teamName", function (value) {
